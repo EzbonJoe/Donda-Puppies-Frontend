@@ -161,7 +161,7 @@ const CollectionPage = () => {
             <div className="product-listing-product-grid"> 
               {collections.map((collection) => (
                 <div key={collection._id} className="product-listing-product-card">
-                  <img src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${collection.backgroundImage}`} alt={collection.name} />
+                  <img src={`https://donda-puppies-backend.onrender.com${collection.backgroundImage}`} alt={collection.name} />
                   <h2>{collection.name}</h2>
                   <p>{collection.description}</p>
                   <Link to={`/collections/${collection.key}`} className="view-link">View collection</Link>

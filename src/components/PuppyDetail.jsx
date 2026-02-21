@@ -45,7 +45,7 @@ export default function PuppyDetail() {
         >
           {puppy.images.map((img, index) => (
             <SwiperSlide key={index}>
-              <img src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${img}`} alt={`${puppy.name} ${index + 1}`} className="slide-image" />
+              <img src={`https://donda-puppies-backend.onrender.com${img}`} alt={`${puppy.name} ${index + 1}`} className="slide-image" />
             </SwiperSlide>
           ))}
         </Swiper>

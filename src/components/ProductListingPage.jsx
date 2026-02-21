@@ -16,7 +16,7 @@ const ProductListingPage = () => {
       <div className="product-listing-product-grid">
         {products.map((product) => (
           <div key={product._id} className="product-listing-product-card">
-            <img src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${product.images[0]}`} alt={product.name} /> 
+            <img src={`https://donda-puppies-backend.onrender.com${product.images[0]}`} alt={product.name} /> 
             <h2>{product.name}</h2>
             <p>Description:{product.description}</p>
             <p>Category: {product.category}</p>

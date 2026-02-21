@@ -36,7 +36,7 @@ export default function CollectionPage(){
   return(
     <div className="collection-page">
       <div className="collection-hero"
-       style={{ background: `url(https://donda-puppies-backend.onrender.com${item.product.images[0]}${collection.backgroundImage}) no-repeat center center/cover`}}
+       style={{ background: `url(https://donda-puppies-backend.onrender.com${collection.backgroundImage}) no-repeat center center/cover`}}
       >
         <h1>{collection.name}</h1>
         <p>{collection.description}</p>
@@ -45,7 +45,7 @@ export default function CollectionPage(){
       <div className="collection-product-grid">
         {collection.puppies.map((puppy) => (
           <div key={puppy._id} className="collection-product-card"> 
-            <img src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${puppy.images[0]}`} alt={puppy.name} />
+            <img src={`https://donda-puppies-backend.onrender.com${puppy.images[0]}`} alt={puppy.name} />
             <h3>{puppy.name}</h3>
             <p>{formatCurrency(puppy.priceCents)}</p>
             <button className='view-more' onClick={() => navigate(`/puppyDetail/${puppy._id}`)}>View more details</button>
