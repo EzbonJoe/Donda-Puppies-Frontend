@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const API_BASE = 'https://donda-puppies-backend.onrender.com/collections';
+const API_BASE = 'https://donda-puppies-backend.onrender.com/api/collections';
 
-const getAllCollections = () => axios.get(`${API_BASE}/`);
+const getAllCollections = () => axios.get(`${API_BASE}`);
 
 const getCollectionByKey = (key) => axios.get(`${API_BASE}/${key}`);
 
