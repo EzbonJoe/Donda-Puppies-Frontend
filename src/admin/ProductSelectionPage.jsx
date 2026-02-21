@@ -56,7 +56,7 @@ const ProductSelectionPage = () => {
             }}
           >
             <img
-              src={`http://localhost:5000${product.images[0]}`}
+              src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${product.images[0]}`}
               alt={product.name}
               style={{ width: '100%', height: '100px', objectFit: 'cover', borderRadius: '6px' }}
             />

@@ -18,7 +18,7 @@ export default function SearchResults() {
   useEffect(() => {
     const fetchResults = async () => {
       try {
-        const res = await axios.get(`https://furniture-backend-msfk.onrender.com/api/search?query=${query}`); 
+        const res = await axios.get(`https://donda-puppies-backend.onrender.com${item.product.images[0]}/api/search?query=${query}`); 
         setProducts(res.data.products);
         setLoading(false);
         console.log("Search results:", res.data.products);

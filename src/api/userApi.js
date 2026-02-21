@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_BASE = 'http://localhost:5000/api/users';
+const API_BASE = 'https://donda-puppies-backend.onrender.com/api/users';
 
 //Admin end points
 const getAllUsers = () => axios.get(`${API_BASE}/`, {

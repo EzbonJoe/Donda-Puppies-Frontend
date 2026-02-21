@@ -1,4 +1,4 @@
-const API_BASE = 'http://localhost:5000/api/admin';
+const API_BASE = 'https://donda-puppies-backend.onrender.com/api/admin';
 
 export const getDashboardData = async (token) => {
   try {

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/user", // adjust if hosted
+  baseURL: "https://donda-puppies-backend.onrender.com/api/user", // adjust if hosted
 });
 
 // Add JWT token automatically

@@ -16,7 +16,7 @@ const PuppiesListingPage = () => {
       <div className="product-listing-product-grid">
         {puppies.map((puppy) => (
           <div key={puppy._id} className="product-listing-product-card">
-            <img src={`http://localhost:5000${puppy.images[0]}`} alt={puppy.name} /> 
+            <img src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${puppy.images[0]}`} alt={puppy.name} /> 
             <h2>{puppy.name}</h2>
             <p>Breed:{puppy.breed}</p>
             <p>Age in weeks: {puppy.ageInWeeks}</p>

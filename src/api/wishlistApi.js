@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE = "http://localhost:5000/api/wishlist";
+const API_BASE = "https://donda-puppies-backend.onrender.com/api/wishlist";
 
 const apiClient = axios.create({
   baseURL: API_BASE,

@@ -56,7 +56,7 @@ const OrderDetailPage = () => {
         {order.items.map((item) => (
           <div className="order-item" key={item._id}>
             <img
-              src={`http://localhost:5000${item.product.images[0]}`}
+              src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${item.product.images[0]}`}
               alt={item.product.name}
               className="order-item-image"
             />

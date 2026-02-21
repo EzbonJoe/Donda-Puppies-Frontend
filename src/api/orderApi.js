@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API_BASE = 'http://localhost:5000/api/orders';
+const API_BASE = 'https://donda-puppies-backend.onrender.com/api/orders';
 
 const placeOrder = (orderData) => axios.post(`${API_BASE}/place`, orderData, {
   headers: {

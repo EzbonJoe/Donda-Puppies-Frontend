@@ -75,7 +75,7 @@ const AdminOrderDetailPage = () => {
         {order.items.map((item, index) => (
           <li key={index} className="order-item">
             <img
-              src={`http://localhost:5000${item.product.images[0]}`}
+              src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}`}
               alt={item.product.name}
               className="order-item-image"
             />
