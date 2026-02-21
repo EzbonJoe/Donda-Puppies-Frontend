@@ -8,7 +8,7 @@ function BestSellingPuppies() {
   useEffect(() => {
     const fetchBestSellers = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/puppies/best-sellers'); // your backend endpoint
+        const res = await fetch('https://donda-puppies-backend.onrender.com/api/puppies/best-sellers'); // your backend endpoint
         const data = await res.json();
         setPuppies(data);
       } catch (err) {
@@ -28,7 +28,7 @@ function BestSellingPuppies() {
             puppies.map((puppy) => (
               <div key={puppy.name} className="best-seller-product-card">
                 <img
-                  src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${puppy.images[0]}`}
+                  src={`https://donda-puppies-backend.onrender.com${puppy.images[0]}`}
                   alt={puppy.name}
                   className="best-seller-product-image"
                 />
