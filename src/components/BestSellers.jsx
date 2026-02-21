@@ -26,7 +26,7 @@ function BestSellingPuppies() {
         <div className="best-seller-product-grid">
           {puppies.length > 0 ? (
             puppies.map((puppy) => (
-              <div key={puppy.name} className="best-seller-product-card">
+              <div key={puppy._id} className="best-seller-product-card">
                 <img
                   src={`https://donda-puppies-backend.onrender.com${puppy.images[0]}`}
                   alt={puppy.name}
