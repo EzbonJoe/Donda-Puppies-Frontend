@@ -20,8 +20,8 @@ const Footer = () => {
       <div className="footer-container">
         {/* Store Info */}
         <div className="footer-section">
-          <h4>Auto-Mobile</h4>
-          <p>Your trusted destination for quality cars in Uganda. Stylish, affordable, and built to last.</p>
+          <h4>Donda Puppies</h4>
+          <p>Uganda’s trusted home for premium, well-cared-for puppies. Quality breeds, happy tails, and lifelong companionship.</p>
         </div>
 
         {/* Quick Links */}

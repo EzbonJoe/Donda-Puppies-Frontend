@@ -7,6 +7,7 @@ import CollectionsPage from './CollectionsPage';
 import UsersPage from './UsersPage';
 import AdminMobileNav from './AdminMobileNav';
 import AccountSettings from './AccountSettings';
+import PuppiesPage from './PuppiesPage';
 
 const Dashboard = () => {
   return(
@@ -20,6 +21,7 @@ const Dashboard = () => {
           <Route path="orders" element={<AdminOrdersPage />} />
           <Route path="collections" element={<CollectionsPage />} />
           <Route path="users" element={<UsersPage />} />
+          <Route path="puppies" element={<PuppiesPage />} />
           <Route path="*" element={<Navigate to="/dashboard" />} />
         </Routes>
       </div>

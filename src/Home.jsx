@@ -13,7 +13,7 @@ export default function Home() {
       <FeaturedCollections/>   
       <ValueProps/>   
       <BestSellers/>
-      <CustomerReviews/>
+      {/* <CustomerReviews/> */}
       <StoreInfo/>
     </div>
   )

@@ -141,6 +141,12 @@
     box-shadow: none; /* optional: simplify mobile visuals */
   }
 
+  .featured-collections-section h2{
+    font-size: 20px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
   /* Optional: make the first collection span both columns */
   /* .featured-collections-section .collections-container > :first-child {
     grid-column: span 2;

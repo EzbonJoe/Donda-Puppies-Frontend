@@ -22,9 +22,11 @@ export const CartProvider = ({children}) => {
     name: '',
     description: '',
     backgroundImage: null,
-    products: []
+    products: [],
+    puppies: []
   });
   const [selectedProducts, setSelectedProducts] = useState(formData.products || []);
+  const [selectedPuppies, setSelectedPuppies] = useState([]);
 
   useEffect(() => {
     if (showModal && formData.products) {
@@ -121,8 +123,12 @@ export const CartProvider = ({children}) => {
   const removeFromCart = async (itemId) => {
     const productId = itemId;
     try {
-      await cartApi.deleteCartItem({productId}); 
-    }catch(error){
+      const response = await cartApi.deleteCartItem({ productId: itemId });
+
+      // Backend returns updated populated cart
+      setCartItems(response.data.items);
+
+    } catch (error) {
       console.error("Error removing item from cart:", error);
     }
     setCartItems((prevItems) => {
@@ -225,7 +231,7 @@ export const CartProvider = ({children}) => {
 
 
   return (
-    <cartContext.Provider value={{cartItems, addToCart, removeFromCart, clearCart, addedMessages, updateCartItemQuantity, deliveryOptions, getDeliveryOption, calculateDeliveryDate, updateDeliveryOption, setCartItems, products, loading, setProducts, collections, setCollections, selectedProducts, setSelectedProducts, isEditing, setIsEditing, editingCollectionId, setEditingCollectionId, showModal, setShowModal, formData, setFormData, puppies, setPuppies}}>
+    <cartContext.Provider value={{cartItems, addToCart, removeFromCart, clearCart, addedMessages, updateCartItemQuantity, deliveryOptions, getDeliveryOption, calculateDeliveryDate, updateDeliveryOption, setCartItems, products, loading, setProducts, collections, setCollections, selectedProducts, setSelectedProducts, isEditing, setIsEditing, editingCollectionId, setEditingCollectionId, showModal, setShowModal, formData, setFormData, puppies, setPuppies, selectedPuppies, setSelectedPuppies}}>
       {children}
     </cartContext.Provider>
   ); 

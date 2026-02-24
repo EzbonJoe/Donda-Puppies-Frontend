@@ -22,7 +22,7 @@ export default function CartItem({item, removeFromCart, updateCartItemQuantity, 
 
       <div className="cart-item-details-grid">
         <img className="product-image"
-          src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}${item.product.images[0]}`}
+          src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}`}
           alt={item.product.name} 
         />
 

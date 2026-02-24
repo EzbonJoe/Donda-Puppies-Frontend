@@ -5,7 +5,7 @@ import {useState} from 'react';
 import collectionApi from '../api/collectionApi';
 
 const CollectionPage = () => {
-  const { collections, setCollections, loading, selectedProducts, isEditing, setIsEditing, editingCollectionId, setEditingCollectionId, showModal, setShowModal, formData, setFormData, setSelectedProducts } = useCart();  
+  const { collections, setCollections, loading, selectedProducts, isEditing, setIsEditing, editingCollectionId, setEditingCollectionId, showModal, setShowModal, formData, setFormData, setSelectedProducts, selectedPuppies, setSelectedPuppies } = useCart();  
   const [successMessage, setSuccesMessage] = useState('');
   const navigate = useNavigate();
  
@@ -28,6 +28,7 @@ const CollectionPage = () => {
       data.append("backgroundImage", formData.backgroundImage);
     }
     data.append("products", JSON.stringify(selectedProducts)); // Send products as JSON string
+    data.append("puppies", JSON.stringify(selectedPuppies));
 
     try {
       if (isEditing) {
@@ -40,7 +41,7 @@ const CollectionPage = () => {
         setSuccesMessage('Collection created successfully!');
       }
      
-      setFormData({ name: '', description: '', backgroundImage: null, products: [] });
+      setFormData({ name: '', description: '', backgroundImage: null, products: [], puppies: [] });
       setShowModal(false);
       setIsEditing(false);
       setEditingCollectionId(null);      
@@ -60,9 +61,11 @@ const CollectionPage = () => {
       description: collection?.description || '',
       backgroundImage: null, // You can optionally prefill if desired
       products: collection?.products?.map(p => typeof p === 'object' ? p._id : p) || [],
+      puppies: collection?.puppies?.map(p => typeof p === 'object' ? p._id : p) || []
     });
     setShowModal(true);
     setSelectedProducts(collection?.products?.map(p => typeof p === 'object' ? p._id : p) || []);
+    setSelectedPuppies(collection?.puppies?.map(p => typeof p === 'object' ? p._id : p) || []);
   };
 
   const handleDeleteClick = async (collectionId, collectionName) => {
@@ -89,8 +92,9 @@ const CollectionPage = () => {
             setShowModal(true)
             setIsEditing(false);
             setEditingCollectionId(null);
-            setFormData({ name: '', description: '', backgroundImage: null, products: [] });
-            setSelectedProducts([]);            
+            setFormData({ name: '', description: '', backgroundImage: null, products: [], puppies: [] });
+            setSelectedProducts([]);   
+            setSelectedPuppies([]);         
           }}
           
         >
@@ -145,7 +149,7 @@ const CollectionPage = () => {
                         setShowModal(false);
                         setIsEditing(false);
                         setEditingCollectionId(null);
-                        setFormData({ name: '', description: '', backgroundImage: null, products: [] });
+                        setFormData({ name: '', description: '', backgroundImage: null, products: [], puppies: [] });
                       }}
                     >
                       Cancel

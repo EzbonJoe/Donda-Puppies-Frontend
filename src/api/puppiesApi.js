@@ -13,7 +13,7 @@ const createPuppy = (data) => axios.post(`${API_BASE}/`, data, {
   }
 });
 
-const updatePuppy = (puppyId, data) => axios.patch(`${API_BASE}/${puppyId}`, data, {
+const updatePuppy = (puppyId, data) => axios.put(`${API_BASE}/${puppyId}`, data, {
   headers: {
     'Content-Type': 'multipart/form-data',
     'Authorization': `Bearer ${localStorage.getItem("token")}`

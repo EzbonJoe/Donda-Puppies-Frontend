@@ -12,6 +12,11 @@ const Sidebar = () => {
         <li>
           <Link to="/adminDashboard/products" style={{ textDecoration: 'none', color: '#333' }} >Products</Link>
         </li>
+
+        <li>
+          <Link to="/adminDashboard/puppies" style={{ textDecoration: 'none', color: '#333' }} >Puppies</Link>
+        </li>
+
         <li>
           <Link to="/adminDashboard/orders" style={{ textDecoration: 'none', color: '#333' }}>Orders</Link>
         </li>

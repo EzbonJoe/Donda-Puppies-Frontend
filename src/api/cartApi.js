@@ -16,7 +16,10 @@ const addItemToCart = (data) => axios.post(`${API_BASE}/add-item`, data, authHea
 
 const updateCartItem = (data) =>  axios.patch(`${API_BASE}/update-item`, data, authHeader()); 
 
-const deleteCartItem = (data) => axios.delete(`${API_BASE}/remove-item`, { data }, authHeader());
+const deleteCartItem = (data) => axios.delete(`${API_BASE}/remove-item`, {
+    ...authHeader(),
+    data
+  });
 
 const clearCart = (userId) => axios.delete(`${API_BASE}/clear/${userId}`, authHeader());
 
