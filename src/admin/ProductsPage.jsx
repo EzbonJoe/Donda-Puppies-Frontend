@@ -189,7 +189,7 @@ const ProductsPage = () => {
         <div className="product-listing-product-grid">
           {products.map((product) => (
             <div key={product._id} className="product-listing-product-card">
-              <img src={`https://donda-puppies-backend.onrender.com${product.images[0]}`} alt={product.name} />
+              <img src={`${product.images[0]}`} alt={product.name} />
               <h2>{product.name}</h2>
               <p>{product.description}</p>
               <p>{formatCurrency(product.priceCents)}</p>             

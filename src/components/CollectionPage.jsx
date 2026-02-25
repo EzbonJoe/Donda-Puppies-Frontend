@@ -36,7 +36,7 @@ export default function CollectionPage(){
   return(
     <div className="collection-page">
       <div className="collection-hero"
-       style={{ background: `url(https://donda-puppies-backend.onrender.com${collection.backgroundImage}) no-repeat center center/cover`}}
+       style={{ background: `url(${collection.backgroundImage}) no-repeat center center/cover`}}
       >
         <h1>{collection.name}</h1>
         <p>{collection.description}</p>

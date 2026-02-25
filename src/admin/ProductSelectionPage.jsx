@@ -94,7 +94,7 @@ const ProductSelectionPage = () => {
             }}
           >
             <img
-              src={`https://donda-puppies-backend.onrender.com${product.images[0]}`}
+              src={`${product.images[0]}`}
               alt={product.name}
               style={{
                 width: "100%",
@@ -139,7 +139,7 @@ const ProductSelectionPage = () => {
             }}
           >
             <img
-              src={`https://donda-puppies-backend.onrender.com${puppy.images[0]}`}
+              src={`${puppy.images[0]}`}
               alt={puppy.name}
               style={{
                 width: "100%",
