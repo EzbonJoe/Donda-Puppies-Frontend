@@ -22,6 +22,13 @@ const PuppiesListingPage = () => {
             <p>Age in weeks: {puppy.ageInWeeks}</p>
             <p>Gender: {puppy.gender}</p>
             <p>Value: {formatCurrency(puppy.priceCents)}</p>
+            {addedMessages[puppy._id] && (
+              <div className={`added-to-cart ${addedMessages[puppy._id] ? 'show-message' : ''}`}>
+                <img src="/images/icons/checkmark.png" alt="Check" />
+                Added
+              </div>
+            )} 
+            <button className="add-to-cart" onClick={() => addToCart(puppy, "puppy")}>Add to Cart</button>
             <button onClick={() => navigate(`/puppyDetail/${puppy._id}`)} className="view-more">View more about Puppy</button>
             
             <WishlistButton productId={puppy._id} />

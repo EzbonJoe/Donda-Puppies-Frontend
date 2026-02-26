@@ -90,72 +90,133 @@ export const CartProvider = ({children}) => {
   const [addedMessages, setAddedMessages] = useState({})
   const addedMessageTimeouts = useRef({});
   
-  const addToCart = async (item) => {
-    const productId = item._id; // Ensure we use the correct ID field
+  const addToCart = async (item, type) => {
+    let payload = {
+      quantity: 1,
+      deliveryOptionId: "1"
+    };
+
+    // Detect type
+    if (type === "product") {
+      payload.productId = item._id;
+    } else if (type === "puppy") {
+      payload.puppyId = item._id;
+    } else if (type === "service") {
+      payload.serviceId = item._id;
+    } else {
+      console.error("Invalid cart item type");
+      return;
+    }
+
     try {
-      await cartApi.addItemToCart({ productId, quantity: 1, deliveryOptionId: '1',}); 
+      await cartApi.addItemToCart(payload);
     } catch (error) {
       console.error("Error adding item to cart:", error);
-      return; // Exit if there's an error
+      return;
     }
+
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i._id === item._id);
-      if (existingItem) {
-        return prevItems.map((i) =>
-          i._id === item._id ? {...i, quantity: i.quantity + 1} : i
-        );
+      const existingItem = prevItems.find((i) =>
+        (type === "product" && i.product?._id === item._id) ||
+        (type === "puppy" && i.puppy?._id === item._id) ||
+        (type === "service" && i.service?._id === item._id)
+      );
+
+      // 🐶 Puppies should NOT increase quantity
+      if (type === "puppy" && existingItem) {
+        alert("This puppy is already in your cart.");
+        return prevItems;
       }
-      return [...prevItems, {...item, quantity: 1, deliveryOptionId: '1'}];
+
+      if (existingItem) {
+        return prevItems.map((i) => {
+          if (
+            (type === "product" && i.product?._id === item._id) ||
+            (type === "service" && i.service?._id === item._id)
+          ) {
+            return { ...i, quantity: i.quantity + 1 };
+          }
+          return i;
+        });
+      }
+
+      // Add new item
+      return [
+        ...prevItems,
+        {
+          [type]: item,
+          quantity: 1,
+          deliveryOptionId: "1"
+        }
+      ];
     });
-    
-    setAddedMessages((prevMessages) => ({...prevMessages, [item._id]: true}))
+
+    setAddedMessages((prevMessages) => ({
+      ...prevMessages,
+      [item._id]: true
+    }));
 
     if (addedMessageTimeouts.current[item._id]) {
       clearTimeout(addedMessageTimeouts.current[item._id]);
     }
 
     addedMessageTimeouts.current[item._id] = setTimeout(() => {
-    setAddedMessages((prevMessages) => ({...prevMessages, [item._id]: false}));
-    }, 2000)
-   
+      setAddedMessages((prevMessages) => ({
+        ...prevMessages,
+        [item._id]: false
+      }));
+    }, 2000);
+  };
+
+  const removeFromCart = async (itemId, type) => {
+  let payload = {};
+
+  if (type === "product") {
+    payload.productId = itemId;
+  } else if (type === "puppy") {
+    payload.puppyId = itemId;
+  } else if (type === "service") {
+    payload.serviceId = itemId;
+  } else {
+    console.error("Invalid item type");
+    return;
   }
 
-  const removeFromCart = async (itemId) => {
-    const productId = itemId;
-    try {
-      const response = await cartApi.deleteCartItem({ productId: itemId });
+  try {
+    const response = await cartApi.deleteCartItem(payload);
 
-      // Backend returns updated populated cart
-      setCartItems(response.data.items);
+    // Backend returns fully populated updated cart
+    setCartItems(response.data.items);
 
-    } catch (error) {
-      console.error("Error removing item from cart:", error);
-    }
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i.product._id === itemId); 
-      if (existingItem && existingItem.quantity > 1) {
-        return prevItems.map((i) =>
-          i.product._id === itemId ? {...i, quantity: i.quantity - 1} : i
-        );
-      }
-      return prevItems.filter((i) => i.product._id !== itemId);
-    });
+  } catch (error) {
+    console.error("Error removing item from cart:", error);
+  }
+  };
+
+const updateCartItemQuantity = async (itemId, quantity, type) => {
+  let payload = { quantity };
+
+  if (type === "product") {
+    payload.productId = itemId;
+  } else if (type === "puppy") {
+    payload.puppyId = itemId;
+  } else if (type === "service") {
+    payload.serviceId = itemId;
+  } else {
+    console.error("Invalid item type");
+    return;
   }
 
-  const updateCartItemQuantity = async (itemId, quantity) => {
-    const productId = itemId
-    try {
-      await cartApi.updateCartItem({productId, quantity}); 
-      setCartItems((prevItems) => {
-        return prevItems.map((i) =>
-          i.product._id === itemId ? {...i, quantity: quantity} : i
-        );
-      });
-      
-    } catch (error) {
-      console.error("Error updating cart item quantity:", error);
-    }
+  try {
+    const response = await cartApi.updateCartItem(payload);
+
+    // Always trust backend response
+    setCartItems(response.data.items);
+
+  } catch (error) {
+    console.error("Error updating cart item quantity:", error);
   }
+};
 
   const clearCart = () => {
     setCartItems([]);

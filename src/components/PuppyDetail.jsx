@@ -40,7 +40,7 @@ export default function PuppyDetail() {
 
   const handleBuyNow = () => {
     if (!puppy.isAvailable) return;
-    navigate(`/puppy-checkout/${puppy._id}`);
+    navigate(`/puppy-cart`);
   };
 
   return (

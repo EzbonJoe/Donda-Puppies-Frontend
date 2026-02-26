@@ -95,7 +95,7 @@ export default function Header() {
           {isLoggedIn && !isAdmin && (
             <>
               <li><Link to="/cart">Cart</Link></li>  
-              <li><Link to="/puppy-checkout"> Puppy Cart</Link></li>       
+              <li><Link to="/puppy-cart"> Puppy Cart</Link></li>       
               <li>
                 <Link to="/userDashboard">Dashboard</Link>
               </li>
@@ -134,7 +134,7 @@ export default function Header() {
           {isLoggedIn && !isAdmin && (
             <>
               <li><Link to="/cart" onClick={() => setShowMenu(false)}>Cart</Link></li>
-              <li><Link to="/puppy-checkout" onClick={() => setShowMenu(false)}>Puppy Cart</Link></li>
+              <li><Link to="/puppy-cart" onClick={() => setShowMenu(false)}>Puppy Cart</Link></li>
               <li><Link to="/userDashboard" onClick={() => setShowMenu(false)}>Dashboard</Link></li>
               <li className="user-greeting">Hi, {user?.name?.split(" ")[0]}</li>
               <li><button onClick={handleLogout}>Logout</button></li>

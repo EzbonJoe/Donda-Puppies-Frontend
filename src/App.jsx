@@ -14,7 +14,6 @@ import ProductSelectionPage from './admin/ProductSelectionPage.jsx';
 import OrderDetailPage from './user/OrderDetailPage.jsx';
 import AdminOrderDetailPage from './admin/AdminOrderDetailPage.jsx';
 import PuppyDetail from './components/PuppyDetail.jsx';
-import PuppyCheckout from './components/PuppyCheckout.jsx';
 import { Route, Routes } from 'react-router-dom';  
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -31,7 +30,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/puppies" element={<PuppiesListingPage />} />
           <Route path="/products" element={<ProductListingPage />} />
-          <Route path="/puppy-checkout/:id" element={<PuppyCheckout />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/puppyDetail/:id" element={<PuppyDetail />} /> 

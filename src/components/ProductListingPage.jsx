@@ -30,7 +30,7 @@ const ProductListingPage = () => {
                 Added
               </div>
             )} 
-            <button className="add-to-cart" onClick={() => addToCart(product)}>Add to Cart</button>
+            <button className="add-to-cart" onClick={() => addToCart(product, "product")}>Add to Cart</button>
             
             <WishlistButton productId={product._id} />
           </div>

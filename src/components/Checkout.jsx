@@ -64,9 +64,23 @@ export default function Checkout(){
 
   cartItems.forEach((item) => {
     totalItems += item.quantity;
-    productsPriceCents += item.product.priceCents * item.quantity;
+
+    if (item.product) {
+      productsPriceCents += item.product.priceCents * item.quantity;
+    }
+
+    if (item.puppy) {
+      productsPriceCents += item.puppy.priceCents * item.quantity;
+    }
+
+    if (item.service) {
+      productsPriceCents += item.service.priceCents * item.quantity;
+    }
+
     const deliveryOption = getDeliveryOption(item.deliveryOptionId);
-    shippingPriceCents += deliveryOption.priceCents;
+    if (deliveryOption) {
+      shippingPriceCents += deliveryOption.priceCents;
+    }
   });
 
   const totalBeforeTaxCents = productsPriceCents + shippingPriceCents;
@@ -87,7 +101,9 @@ export default function Checkout(){
         shippingAddress,
         paymentMethod,
         items: cartItems.map(item => ({
-          productId: item.product._id,
+          productId: item.product?._id || null,
+          puppyId: item.puppy?._id || null,
+          serviceId: item.service?._id || null,
           quantity: item.quantity,
           deliveryOptionId: item.deliveryOptionId
         })),
