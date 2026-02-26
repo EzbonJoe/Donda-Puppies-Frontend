@@ -28,7 +28,7 @@ function BestSellingPuppies() {
             puppies.map((puppy) => (
               <div key={puppy._id} className="best-seller-product-card">
                 <img
-                  src={`https://donda-puppies-backend.onrender.com${puppy.images[0]}`}
+                  src={`${puppy.images[0]}`}
                   alt={puppy.name}
                   className="best-seller-product-image"
                 />

@@ -2626,3 +2626,38 @@ status.shipped {
   font-weight: 600;
   margin-bottom: 0.3rem;
 }
+
+/*Puppy styles */
+
+.buy-now-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 16px;
+  background-color: #111;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.buy-now-button:hover {
+  background-color: #333;
+}
+
+.buy-now-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.availability {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.available {
+  color: green;
+}
+
+.sold {
+  color: red;
+}
