@@ -6,7 +6,7 @@ import WishlistButton from './WishlistButton';
 
 const PuppiesListingPage = () => {
   const navigate = useNavigate(); 
-  const { puppies, loading } = useCart(); 
+  const { puppies, loading, addedMessages, addToCart } = useCart(); 
 
   if (loading) return <LoadingSpinner />;  
 
@@ -21,16 +21,17 @@ const PuppiesListingPage = () => {
             <p>Breed:{puppy.breed}</p>
             <p>Age in weeks: {puppy.ageInWeeks}</p>
             <p>Gender: {puppy.gender}</p>
-            <p>Value: {formatCurrency(puppy.priceCents)}</p>
+            <p>Value: {formatCurrency(puppy.price)}</p>
+            <button onClick={() => navigate(`/puppyDetail/${puppy._id}`)} className="view-more">View more about Puppy</button>
             {addedMessages[puppy._id] && (
               <div className={`added-to-cart ${addedMessages[puppy._id] ? 'show-message' : ''}`}>
                 <img src="/images/icons/checkmark.png" alt="Check" />
                 Added
               </div>
             )} 
-            <button className="add-to-cart" onClick={() => addToCart(puppy, "puppy")}>Add to Cart</button>
-            <button onClick={() => navigate(`/puppyDetail/${puppy._id}`)} className="view-more">View more about Puppy</button>
-            
+
+            <button className="add-to-cart" disabled={!puppy.isAvailable} onClick={() => addToCart(puppy, "puppy")}>{puppy.isAvailable ? "Add to Cart" : "SOLD"}</button>
+         
             <WishlistButton productId={puppy._id} />
           </div>
         ))}

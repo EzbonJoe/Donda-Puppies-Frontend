@@ -56,14 +56,14 @@ const OrderDetailPage = () => {
         {order.items.map((item) => (
           <div className="order-item" key={item._id}>
             <img
-              src={`https://donda-puppies-backend.onrender.com${item.product.images[0]}`}
+              src={`${item.product.images[0]}`}
               alt={item.product.name}
               className="order-item-image"
             />
             <div>
               <p className="product-name">{item.product.name}</p>
               <p>Qty: {item.quantity}</p>
-              <p>Price: {formatCurrency(item.product.priceCents)}</p>
+              <p>Price: {formatCurrency(item.product.price)}</p>
             </div>
           </div>
         ))}

@@ -59,35 +59,35 @@ export default function Checkout(){
   }
 
   let totalItems = 0; 
-  let productsPriceCents = 0;
-  let shippingPriceCents  = 0;
+  let productsPrice = 0;
+  let shippingPrice  = 0;
 
   cartItems.forEach((item) => {
     totalItems += item.quantity;
 
     if (item.product) {
-      productsPriceCents += item.product.priceCents * item.quantity;
+      productsPrice += item.product.price * item.quantity;
     }
 
     if (item.puppy) {
-      productsPriceCents += item.puppy.priceCents * item.quantity;
+      productsPrice += item.puppy.price * item.quantity;
     }
 
     if (item.service) {
-      productsPriceCents += item.service.priceCents * item.quantity;
+      productsPrice += item.service.price * item.quantity;
     }
 
     const deliveryOption = getDeliveryOption(item.deliveryOptionId);
     if (deliveryOption) {
-      shippingPriceCents += deliveryOption.priceCents;
+      shippingPrice += deliveryOption.price;
     }
   });
 
-  const totalBeforeTaxCents = productsPriceCents + shippingPriceCents;
+  const totalBeforeTax = productsPrice + shippingPrice;
 
-  const taxCents = totalBeforeTaxCents * 0.1;
+  const tax = totalBeforeTax * 0.1;
 
-  const totalCents = totalBeforeTaxCents + taxCents;
+  const total = totalBeforeTax + tax;
 
   const handlePlaceOrder = async () => {
     if (!userId || !localStorage.getItem("token")) {
@@ -107,7 +107,7 @@ export default function Checkout(){
           quantity: item.quantity,
           deliveryOptionId: item.deliveryOptionId
         })),
-        totalCents
+        total
       };
 
       const response = await orderApi.placeOrder(orderData);
@@ -221,13 +221,14 @@ export default function Checkout(){
           <div className="payment-summary">
             <PaymentSummary     
               totalItems={totalItems}         
-              productsPriceCents={productsPriceCents}
-              shippingPriceCents={shippingPriceCents}
-              totalBeforeTaxCents={totalBeforeTaxCents}
-              taxCents={taxCents}
-              totalCents={totalCents}
+              productsPrice={productsPrice}
+              shippingPrice={shippingPrice}
+              totalBeforeTax={totalBeforeTax}
+              tax={tax}
+              total={total}
               handlePlaceOrder={handlePlaceOrder}
               successMessage={successMessage}
+              cartItems={cartItems}
               error={error}              
             />
           </div>

@@ -55,7 +55,7 @@ export default function ProductDetail() {
       <div className="product-info">
         <h1>{product.name}</h1>
         <p className="description">{product.description}</p>
-        <p className="price">{formatCurrency(product.priceCents)}</p>       
+        <p className="price">{formatCurrency(product.price)}</p>       
           {addedMessages[product._id] && (
               <div className={`added-to-cart ${addedMessages[product._id] ? 'show-message' : ''}`}>
                 <img src="/images/icons/checkmark.png" alt="Check" />

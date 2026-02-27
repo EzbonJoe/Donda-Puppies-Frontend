@@ -2322,6 +2322,12 @@ status.shipped {
   transition: background 0.3s;
 }
 
+.add-to-cart:disabled {
+  background-color: #aaa;     /* Greyed out */
+  cursor: not-allowed;        /* Shows "not allowed" cursor */
+  opacity: 0.6;               /* Slightly transparent */
+}
+
 .add-to-cart:hover {
   background-color: #0056b3;
 }

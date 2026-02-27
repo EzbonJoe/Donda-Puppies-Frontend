@@ -73,7 +73,7 @@ export default function PuppyDetail() {
         <p className="description">{puppy.description}</p>
 
         <p className="price">
-          {formatCurrency(puppy.priceCents)}
+          {formatCurrency(puppy.price)}
         </p>
 
         <div className="puppy-attributes">

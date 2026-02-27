@@ -22,7 +22,7 @@ export default function CartItem({ item, removeFromCart, updateCartItemQuantity,
     : "service";
 
   const handleSave = () => {
-    updateCartItemQuantity(data._id, Number(tempQuantity));
+    updateCartItemQuantity(data._id, Number(tempQuantity), type);
     setIsEditing(false);
   };
 
@@ -38,7 +38,7 @@ export default function CartItem({ item, removeFromCart, updateCartItemQuantity,
         {data.images && data.images.length > 0 && (
           <img
             className="product-image"
-            src={`https://donda-puppies-backend.onrender.com${data.images[0]}`}
+            src={`${data.images[0]}`}
             alt={data.name}
           />
         )}
@@ -48,7 +48,7 @@ export default function CartItem({ item, removeFromCart, updateCartItemQuantity,
 
           {/* Price only for products & puppies */}
           {(type === "product" || type === "puppy") && (
-            <div className="product-price">{formatCurrency(data.priceCents)}</div>
+            <div className="product-price">{formatCurrency(data.price)}</div>
           )}
 
           {/* Quantity management */}
@@ -85,7 +85,7 @@ export default function CartItem({ item, removeFromCart, updateCartItemQuantity,
 
             <span
               className="delete-quantity-link link-primary"
-              onClick={() => removeFromCart(data._id)}
+              onClick={() => removeFromCart(data._id, type)}
             >
               Delete
             </span>
@@ -99,9 +99,9 @@ export default function CartItem({ item, removeFromCart, updateCartItemQuantity,
             {deliveryOptions.map((deliveryOption) => {
               const dateString = calculateDeliveryDate(deliveryOption);
               const priceString =
-                deliveryOption.priceCents === 0
+                deliveryOption.price === 0
                   ? "free"
-                  : `${formatCurrency(deliveryOption.priceCents)} - `;
+                  : `${formatCurrency(deliveryOption.price)} - `;
               const isChecked = deliveryOption.id === item.deliveryOptionId;
               return (
                 <DeliveryOptionContainer
@@ -165,7 +165,7 @@ export default function CartItem({ item, removeFromCart, updateCartItemQuantity,
 //             {item.product.name}
 //           </div>
 //           <div className="product-price">
-//            {formatCurrency(item.product.priceCents)}
+//            {formatCurrency(item.product.price)}
 //           </div>
 //           <div className="product-quantity">           
 //             {isEditing ? (
@@ -208,7 +208,7 @@ export default function CartItem({ item, removeFromCart, updateCartItemQuantity,
 //           </div>
 //           { deliveryOptions.map((deliveryOption) => {
 //             const dateString = calculateDeliveryDate(deliveryOption);            
-//             const priceString = deliveryOption.priceCents === 0 ? 'free': `${formatCurrency(deliveryOption.priceCents)} - `;
+//             const priceString = deliveryOption.price === 0 ? 'free': `${formatCurrency(deliveryOption.price)} - `;
 //             const isChecked = deliveryOption.id === item.deliveryOptionId;
 //             return(
 //               <DeliveryOptionContainer

@@ -49,7 +49,7 @@ export default function SearchResults() {
               />
             </div>
             <h3 className="product-name">{product.name}</h3>
-            <p className="product-price">{formatCurrency(product.priceCents)}</p>
+            <p className="product-price">{formatCurrency(product.price)}</p>
 
             <div className="product-actions">
               <button 

@@ -17,7 +17,7 @@ const PuppiesPage = () => {
     breed: '',
     ageInWeeks: '',
     gender: '',
-    priceCents: '',
+    price: '',
     vaccinated: false,
     dewormed: false,
     trained: false,
@@ -39,7 +39,7 @@ const PuppiesPage = () => {
 
   // Number fields
   formData.append('ageInWeeks', form.ageInWeeks ? Number(form.ageInWeeks) : 0);
-  formData.append('priceCents', form.priceCents ? Math.round(Number(form.priceCents) * 100) : 0);
+  formData.append('price', form.price ? Math.round(Number(form.price) * 100) : 0);
 
   // Boolean fields
   formData.append('isAvailable', form.isAvailable ? "true" : "true"); // default true for new puppy
@@ -65,7 +65,7 @@ const PuppiesPage = () => {
       breed: '',
       ageInWeeks: '',
       gender: '',
-      priceCents: '',
+      price: '',
       isAvailable: true,
       vaccinated: false,
       dewormed: false,
@@ -93,7 +93,7 @@ const PuppiesPage = () => {
   formData.append('breed', form.breed);
   formData.append('ageInWeeks', Number(form.ageInWeeks));
   formData.append('gender', form.gender);
-  formData.append('priceCents', Math.round(parseFloat(form.priceCents) * 100));
+  formData.append('price', Math.round(parseFloat(form.price) * 100));
   formData.append('vaccinated', form.vaccinated ? "true" : "false");
   formData.append('dewormed', form.dewormed ? "true" : "false");
   formData.append('trained', form.trained ? "true" : "false");
@@ -114,7 +114,7 @@ const PuppiesPage = () => {
       breed: '',
       ageInWeeks: '',
       gender: '',
-      priceCents: '',
+      price: '',
       vaccinated: false,
       dewormed: false,
       trained: false,
@@ -141,7 +141,7 @@ const PuppiesPage = () => {
       breed: product.breed,
       ageInWeeks: product.ageInWeeks,
       gender: product.gender,
-      priceCents: (product.priceCents / 100).toFixed(2),
+      price: (product.price / 100).toFixed(2),
       vaccinated: product.vaccinated,
       dewormed: product.dewormed,
       trained: product.trained,
@@ -264,8 +264,8 @@ const PuppiesPage = () => {
                 <input
                   type="number"
                   placeholder="Price (in USD)"
-                  value={form.priceCents}
-                  onChange={(e) => setForm({ ...form, priceCents: e.target.value })}
+                  value={form.price}
+                  onChange={(e) => setForm({ ...form, price: e.target.value })}
                   required
                 />
                 <input
@@ -294,7 +294,7 @@ const PuppiesPage = () => {
               <p>{puppy.description}</p>
               <p>Age: {puppy.ageInWeeks} weeks</p>
               <p>Breed: {puppy.breed}</p>
-              <p>{formatCurrency(puppy.priceCents)}</p>             
+              <p>{formatCurrency(puppy.price)}</p>             
               <button className='edit-btn' onClick={() => handleEditClick(puppy)}>
                 Edit
               </button>

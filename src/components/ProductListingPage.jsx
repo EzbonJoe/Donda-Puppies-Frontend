@@ -21,7 +21,7 @@ const ProductListingPage = () => {
             <p>Description:{product.description}</p>
             <p>Category: {product.category}</p>
             {/* <p>Brand: {product.brand}</p> */}
-            <p>Price: {formatCurrency(product.priceCents)}</p>
+            <p>Price: {formatCurrency(product.price)}</p>
             {/* <p>Stock: {product.stock}</p> */}
             <button onClick={() => navigate(`/productDetail/${product._id}`)} className="view-more">View more about product</button>
             {addedMessages[product._id] && (

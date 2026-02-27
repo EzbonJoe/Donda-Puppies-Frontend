@@ -74,7 +74,7 @@ const WishList = () => {
               <div className="image-wrapper">
                 <Link to={`/productDetail/${product._id}`}>
                   <img
-                    src={`https://donda-puppies-backend.onrender.com${product.images[0]}`}
+                    src={`${product.images[0]}`}
                     alt={product.name}
                   />
                 </Link>
@@ -104,7 +104,7 @@ const WishList = () => {
                   {product.name}
                 </Link>
                 <p className="wishlist-price">
-                  ${(product.priceCents / 100).toFixed(2)}
+                  ${(product.price)}
                 </p>                
               </div>
             </div>

@@ -15,7 +15,7 @@ const ProductsPage = () => {
     name: '',
     description: '',
     category: '',
-    priceCents: '',      
+    price: '',      
   });
 
   const [imageFiles, setImageFiles] = useState([]);
@@ -26,7 +26,7 @@ const ProductsPage = () => {
     formData.append('name', form.name);
     formData.append('description', form.description);
     formData.append('category', form.category);
-    formData.append('priceCents', Math.round(parseFloat(form.priceCents) * 100));
+    formData.append('price', Math.round(parseFloat(form.price) * 100));
     imageFiles.forEach((file) => {
       formData.append('images', file);
     });
@@ -37,7 +37,7 @@ const ProductsPage = () => {
         name: '',
         description: '',
         category: '',
-        priceCents: ''
+        price: ''
       });
 
       setSuccessMessage('Product added successfully!');
@@ -63,7 +63,7 @@ const ProductsPage = () => {
     formData.append('name', form.name);
     formData.append('description', form.description);
     formData.append('category', form.category);
-    formData.append('priceCents', Math.round(parseFloat(form.priceCents) * 100));
+    formData.append('price', Math.round(parseFloat(form.price) * 100));
     imageFiles.forEach((file) => {
       formData.append('images', file);
     });
@@ -75,7 +75,7 @@ const ProductsPage = () => {
         name: '',
         description: '',
         category: '',
-        priceCents: ''
+        price: ''
       });
       setSuccessMessage('Product updated successfully!');
       setTimeout(() => {
@@ -86,7 +86,7 @@ const ProductsPage = () => {
         name: '', 
         description: '',
         category: '',
-        priceCents: ''
+        price: ''
       });
       setImageFiles([]);
       setShowModal(false);
@@ -105,7 +105,7 @@ const ProductsPage = () => {
       name: product.name,
       description: product.description,
       category: product.category,
-      priceCents: (product.priceCents / 100).toFixed(2),
+      price: (product.price / 100).toFixed(2),
     });
     setImageFiles([]);
     setEditingProductId(product._id);
@@ -164,8 +164,8 @@ const ProductsPage = () => {
                 <input
                   type="number"
                   placeholder="Price (in USD)"
-                  value={form.priceCents}
-                  onChange={(e) => setForm({ ...form, priceCents: e.target.value })}
+                  value={form.price}
+                  onChange={(e) => setForm({ ...form, price: e.target.value })}
                   required
                 />
                 <input
@@ -192,7 +192,7 @@ const ProductsPage = () => {
               <img src={`${product.images[0]}`} alt={product.name} />
               <h2>{product.name}</h2>
               <p>{product.description}</p>
-              <p>{formatCurrency(product.priceCents)}</p>             
+              <p>{formatCurrency(product.price)}</p>             
               <button className='edit-btn' onClick={() => handleEditClick(product)}>
                 Edit
               </button>

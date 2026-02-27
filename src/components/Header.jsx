@@ -94,8 +94,7 @@ export default function Header() {
           <li><Link to="/contact">Contact</Link></li>
           {isLoggedIn && !isAdmin && (
             <>
-              <li><Link to="/cart">Cart</Link></li>  
-              <li><Link to="/puppy-cart"> Puppy Cart</Link></li>       
+              <li><Link to="/cart">Cart</Link></li>       
               <li>
                 <Link to="/userDashboard">Dashboard</Link>
               </li>

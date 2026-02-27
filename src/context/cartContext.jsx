@@ -111,7 +111,7 @@ export const CartProvider = ({children}) => {
     try {
       await cartApi.addItemToCart(payload);
     } catch (error) {
-      console.error("Error adding item to cart:", error);
+      console.error("Backend says:", error.response?.data);
       return;
     }
 
@@ -225,15 +225,15 @@ const updateCartItemQuantity = async (itemId, quantity, type) => {
   const deliveryOptions = [{
     id: '1',
     deliveryDays: 7,
-    priceCents: 0
+    price: 0
   },{
     id: '2',
     deliveryDays: 3,
-    priceCents: 499
+    price: 499
   },{
     id: '3',
     deliveryDays: 1,
-    priceCents: 999
+    price: 999
   }]
 
   function getDeliveryOption(deliveryOptionId){

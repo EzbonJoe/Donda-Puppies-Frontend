@@ -8,36 +8,36 @@ export default function PaymentSummary({
 }) {
   // Calculate totals dynamically
   let totalItems = 0;
-  let productsPriceCents = 0;
-  let puppiesPriceCents = 0;
-  let servicesPriceCents = 0;
-  let shippingPriceCents = 0;
+  let productsPrice = 0;
+  let puppiesPrice = 0;
+  let servicesPrice = 0;
+  let shippingPrice = 0;
 
   cartItems.forEach((item) => {
     totalItems += item.quantity;
 
     if (item.product) {
-      productsPriceCents += item.product.priceCents * item.quantity;
+      productsPrice += item.product.price * item.quantity;
       // Shipping option for products
-      shippingPriceCents += item.deliveryOption?.priceCents || 0;
+      shippingPrice += item.deliveryOption?.price || 0;
     }
 
     if (item.puppy) {
-      puppiesPriceCents += item.puppy.priceCents * item.quantity;
+      puppiesPrice += item.puppy.price * item.quantity;
       // Shipping option for puppies
-      shippingPriceCents += item.deliveryOption?.priceCents || 0;
+      shippingPrice += item.deliveryOption?.price || 0;
     }
 
     if (item.service) {
-      servicesPriceCents += item.service.priceCents * item.quantity || 0;
+      servicesPrice += item.service.price * item.quantity || 0;
     }
   });
 
-  const totalBeforeTaxCents =
-    productsPriceCents + puppiesPriceCents + servicesPriceCents + shippingPriceCents;
+  const totalBeforeTax =
+    productsPrice + puppiesPrice + servicesPrice + shippingPrice;
 
-  const taxCents = totalBeforeTaxCents * 0.1;
-  const totalCents = totalBeforeTaxCents + taxCents;
+  const tax = totalBeforeTax * 0.1;
+  const total = totalBeforeTax + tax;
 
   return (
     <>
@@ -46,38 +46,38 @@ export default function PaymentSummary({
       <div className="payment-summary-row">
         <div>Products ({totalItems}):</div>
         <div className="payment-summary-money">
-          {formatCurrency(productsPriceCents)}
+          {formatCurrency(productsPrice)}
         </div>
       </div>
 
       <div className="payment-summary-row">
         <div>Puppies:</div>
-        <div className="payment-summary-money">{formatCurrency(puppiesPriceCents)}</div>
+        <div className="payment-summary-money">{formatCurrency(puppiesPrice)}</div>
       </div>
 
       <div className="payment-summary-row">
         <div>Services:</div>
-        <div className="payment-summary-money">{formatCurrency(servicesPriceCents)}</div>
+        <div className="payment-summary-money">{formatCurrency(servicesPrice)}</div>
       </div>
 
       <div className="payment-summary-row">
         <div>Shipping &amp; handling:</div>
-        <div className="payment-summary-money">{formatCurrency(shippingPriceCents)}</div>
+        <div className="payment-summary-money">{formatCurrency(shippingPrice)}</div>
       </div>
 
       <div className="payment-summary-row subtotal-row">
         <div>Total before tax:</div>
-        <div className="payment-summary-money">{formatCurrency(totalBeforeTaxCents)}</div>
+        <div className="payment-summary-money">{formatCurrency(totalBeforeTax)}</div>
       </div>
 
       <div className="payment-summary-row">
         <div>Estimated tax (10%):</div>
-        <div className="payment-summary-money">{formatCurrency(taxCents)}</div>
+        <div className="payment-summary-money">{formatCurrency(tax)}</div>
       </div>
 
       <div className="payment-summary-row total-row">
         <div>Order total:</div>
-        <div className="payment-summary-money">{formatCurrency(totalCents)}</div>
+        <div className="payment-summary-money">{formatCurrency(total)}</div>
       </div>
 
       <button className="place-order-button button-primary" onClick={handlePlaceOrder}>
@@ -90,7 +90,7 @@ export default function PaymentSummary({
   );
 }
 
-// export default function PaymentSummary({productsPriceCents, shippingPriceCents, totalBeforeTaxCents, taxCents,  totalCents, totalItems, handlePlaceOrder, successMessage, error}) {
+// export default function PaymentSummary({productsPrice, shippingPrice, totalBeforeTax, tax,  total, totalItems, handlePlaceOrder, successMessage, error}) {
 //   return(
 //     <>
 //       <div className="payment-summary-title">
@@ -99,27 +99,27 @@ export default function PaymentSummary({
 
 //       <div className="payment-summary-row">
 //         <div>Items ({totalItems}):</div>
-//         <div className="payment-summary-money">{formatCurrency(productsPriceCents)}</div>
+//         <div className="payment-summary-money">{formatCurrency(productsPrice)}</div>
 //       </div>
 
 //       <div className="payment-summary-row">
 //         <div>Shipping &amp; handling:</div>
-//         <div className="payment-summary-money">{formatCurrency(shippingPriceCents)}</div>
+//         <div className="payment-summary-money">{formatCurrency(shippingPrice)}</div>
 //       </div>
 
 //       <div className="payment-summary-row subtotal-row">
 //         <div>Total before tax:</div>
-//         <div className="payment-summary-money">{formatCurrency(totalBeforeTaxCents)}</div>
+//         <div className="payment-summary-money">{formatCurrency(totalBeforeTax)}</div>
 //       </div>
 
 //       <div className="payment-summary-row">
 //         <div>Estimated tax (10%):</div>
-//         <div className="payment-summary-money">{formatCurrency(taxCents)}</div>
+//         <div className="payment-summary-money">{formatCurrency(tax)}</div>
 //       </div>
 
 //       <div className="payment-summary-row total-row">
 //         <div>Order total:</div>
-//         <div className="payment-summary-money">{formatCurrency(totalCents)}</div>
+//         <div className="payment-summary-money">{formatCurrency(total)}</div>
 //       </div>
 
 //       <button className="place-order-button button-primary" onClick={handlePlaceOrder}> 
