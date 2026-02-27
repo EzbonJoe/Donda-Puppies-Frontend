@@ -39,7 +39,7 @@ const PuppiesPage = () => {
 
   // Number fields
   formData.append('ageInWeeks', form.ageInWeeks ? Number(form.ageInWeeks) : 0);
-  formData.append('price', form.price ? Math.round(Number(form.price) * 100) : 0);
+  formData.append('price', form.price ? form.price : 0);
 
   // Boolean fields
   formData.append('isAvailable', form.isAvailable ? "true" : "true"); // default true for new puppy
@@ -93,7 +93,7 @@ const PuppiesPage = () => {
   formData.append('breed', form.breed);
   formData.append('ageInWeeks', Number(form.ageInWeeks));
   formData.append('gender', form.gender);
-  formData.append('price', Math.round(parseFloat(form.price) * 100));
+  formData.append('price', form.price);
   formData.append('vaccinated', form.vaccinated ? "true" : "false");
   formData.append('dewormed', form.dewormed ? "true" : "false");
   formData.append('trained', form.trained ? "true" : "false");

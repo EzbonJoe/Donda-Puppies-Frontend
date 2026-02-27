@@ -26,7 +26,7 @@ const ProductsPage = () => {
     formData.append('name', form.name);
     formData.append('description', form.description);
     formData.append('category', form.category);
-    formData.append('price', Math.round(parseFloat(form.price) * 100));
+    formData.append('price', form.price);
     imageFiles.forEach((file) => {
       formData.append('images', file);
     });
@@ -63,7 +63,7 @@ const ProductsPage = () => {
     formData.append('name', form.name);
     formData.append('description', form.description);
     formData.append('category', form.category);
-    formData.append('price', Math.round(parseFloat(form.price) * 100));
+    formData.append('price', form.price);
     imageFiles.forEach((file) => {
       formData.append('images', file);
     });
