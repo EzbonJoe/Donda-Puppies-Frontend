@@ -157,7 +157,7 @@ const ProductsPage = () => {
                   onChange={(e) => setForm({ ...form, description: e.target.value })}
                 />
                 <textarea
-                  placeholder="Category"
+                  placeholder="Category eg Food, Shampoo, Accessories"
                   value={form.category}
                   onChange={(e) => setForm({ ...form, category: e.target.value })}
                 />
