@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Home, ShoppingBag,Package, FolderKanban, Users, User } from 'lucide-react'; 
+import { Home, ShoppingBag,Package, FolderKanban, Users, User, Dog } from 'lucide-react'; 
 
 const AdminMobileNav = () => { 
   return (
@@ -11,6 +11,10 @@ const AdminMobileNav = () => {
       <NavLink to="/adminDashboard/products" className="nav-item">
         <Package size={20} />
         <span>Products</span>
+      </NavLink>
+      <NavLink to="/adminDashboard/puppies" className="nav-item">
+        <Dog size={20} />
+        <span>Puppies</span>
       </NavLink>
       <NavLink to="/adminDashboard/orders" className="nav-item">
         <ShoppingBag size={20} />
