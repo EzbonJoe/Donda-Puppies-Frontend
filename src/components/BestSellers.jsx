@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { formatCurrency } from '../utils/money';
 
 function BestSellingPuppies() {
   const [puppies, setPuppies] = useState([]); // state for puppies
@@ -33,7 +34,7 @@ function BestSellingPuppies() {
                   className="best-seller-product-image"
                 />
                 <h3 className="best-seller-product-name">{puppy.name}</h3>
-                <p className="best-seller-product-price">{puppy.price}</p>
+                <p className="best-seller-product-price">{formatCurrency(puppy.price)}</p>
                  <button onClick={() => navigate(`/puppyDetail/${puppy._id}`)} className="view-more">View more about Puppy</button>
               </div>
             ))

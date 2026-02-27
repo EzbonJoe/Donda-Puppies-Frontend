@@ -38,8 +38,8 @@ const Footer = () => {
         {/* Contact Info */}
         <div className="footer-section">
           <h4>Contact</h4>
-          <p>📍 123 Home Street, Kamapala</p>
-          <p>📞 +256 800 123 4567</p>
+          <p>📍 Najjera, Kamapala</p>
+          <p>📞 +256 709 848 167</p>
           <p>✉️ support@auto-mobile.ug</p>
         </div>
 

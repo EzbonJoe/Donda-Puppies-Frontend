@@ -167,7 +167,7 @@ export default function Checkout(){
           </div>
 
           <div className="shipping-info-form">
-            <h3>Shipping Address</h3>
+            <h3>Address</h3>
             <input
               type="text"
               placeholder="Full Name"
