@@ -5,6 +5,7 @@ export default function PaymentSummary({
   handlePlaceOrder,
   successMessage,
   error,
+  clearCartBackend
 }) {
   // Calculate totals dynamically
   let totalItems = 0;
@@ -82,6 +83,10 @@ export default function PaymentSummary({
 
       <button className="place-order-button button-primary" onClick={handlePlaceOrder}>
         Place your order
+      </button>
+
+      <button className="clear-cart-button" onClick={clearCartBackend}>
+        Clear Cart
       </button>
 
       {successMessage && <div className="success-message">{successMessage}</div>}

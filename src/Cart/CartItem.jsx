@@ -21,6 +21,10 @@ export default function CartItem({ item, removeFromCart, updateCartItemQuantity,
     ? "puppy"
     : "service";
 
+  if (!data || !data._id) {
+    return null; // skip broken cart items
+  }
+
   const handleSave = () => {
     updateCartItemQuantity(data._id, Number(tempQuantity), type);
     setIsEditing(false);

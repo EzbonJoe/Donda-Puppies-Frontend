@@ -222,6 +222,15 @@ const updateCartItemQuantity = async (itemId, quantity, type) => {
     setCartItems([]);
   }
 
+  const clearCartBackend = async (userId) => {
+    try {      await cartApi.clearCart(userId);
+      setCartItems([]);
+    }
+    catch (error) {
+      console.error("Error clearing cart:", error);
+    }
+  }
+
   const deliveryOptions = [{
     id: '1',
     deliveryDays: 7,
@@ -292,7 +301,7 @@ const updateCartItemQuantity = async (itemId, quantity, type) => {
 
 
   return (
-    <cartContext.Provider value={{cartItems, addToCart, removeFromCart, clearCart, addedMessages, updateCartItemQuantity, deliveryOptions, getDeliveryOption, calculateDeliveryDate, updateDeliveryOption, setCartItems, products, loading, setProducts, collections, setCollections, selectedProducts, setSelectedProducts, isEditing, setIsEditing, editingCollectionId, setEditingCollectionId, showModal, setShowModal, formData, setFormData, puppies, setPuppies, selectedPuppies, setSelectedPuppies}}>
+    <cartContext.Provider value={{cartItems, addToCart, removeFromCart, clearCart, addedMessages, updateCartItemQuantity, deliveryOptions, getDeliveryOption, calculateDeliveryDate, updateDeliveryOption, setCartItems, products, loading, setProducts, collections, setCollections, selectedProducts, setSelectedProducts, isEditing, setIsEditing, editingCollectionId, setEditingCollectionId, showModal, setShowModal, formData, setFormData, puppies, setPuppies, selectedPuppies, setSelectedPuppies, clearCartBackend}}>
       {children}
     </cartContext.Provider>
   ); 

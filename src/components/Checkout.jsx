@@ -9,7 +9,7 @@ import orderApi from '../api/orderApi';
 import {useNavigate} from 'react-router-dom';
 
 export default function Checkout(){
-  const { cartItems, addToCart, removeFromCart, clearCart, updateCartItemQuantity,  getDeliveryOption, calculateDeliveryDate, setCartItems } = useCart();
+  const { cartItems, addToCart, removeFromCart, clearCart, updateCartItemQuantity,  getDeliveryOption, calculateDeliveryDate, setCartItems, clearCartBackend } = useCart();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
@@ -25,7 +25,6 @@ export default function Checkout(){
 
   const user = JSON.parse(localStorage.getItem("user"));
   const userId =  user?.id;
-  
 
   useEffect(() => {
     // Fetch the cart items for the user when the component mounts
@@ -140,6 +139,7 @@ export default function Checkout(){
           </div>
         </div>
 
+
       </div>
 
       <div className="main">
@@ -217,7 +217,6 @@ export default function Checkout(){
             </select>
           </div>
           
-
           <div className="payment-summary">
             <PaymentSummary     
               totalItems={totalItems}         
@@ -229,7 +228,8 @@ export default function Checkout(){
               handlePlaceOrder={handlePlaceOrder}
               successMessage={successMessage}
               cartItems={cartItems}
-              error={error}              
+              error={error}  
+              clearCartBackend={clearCartBackend}           
             />
           </div>
         </div>
