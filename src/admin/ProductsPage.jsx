@@ -105,7 +105,7 @@ const ProductsPage = () => {
       name: product.name,
       description: product.description,
       category: product.category,
-      price: (product.price / 100).toFixed(2),
+      price: product.price,
     });
     setImageFiles([]);
     setEditingProductId(product._id);

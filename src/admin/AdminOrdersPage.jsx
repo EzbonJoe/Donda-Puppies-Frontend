@@ -83,7 +83,7 @@ const AdminOrdersPage = () => {
                   <td>{order._id}</td>
                   <td>{order.user?.email || 'N/A'}</td>
                   <td>{order.status}</td>
-                  <td>${order.totalAmount.toFixed(2)}</td>
+                  <td>${order.totalAmount}</td>
                   <td>{order.paymentMethod || 'N/A'}</td>
                   <td>{new Date(order.createdAt).toLocaleString()}</td>
                   <td>
@@ -107,7 +107,7 @@ const AdminOrdersPage = () => {
                     {order.status}
                   </span>
                 </div>
-                <div><strong>Total:</strong> ${order.totalAmount.toFixed(2)}</div>
+                <div><strong>Total:</strong> ${order.totalAmount}</div>
                 <div><strong>Date:</strong> {new Date(order.createdAt).toLocaleDateString()}</div>
                 <Link to={`/admin/order/${order._id}`}><button>View</button></Link>
               </div>

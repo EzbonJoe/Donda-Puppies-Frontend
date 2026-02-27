@@ -141,7 +141,7 @@ const PuppiesPage = () => {
       breed: product.breed,
       ageInWeeks: product.ageInWeeks,
       gender: product.gender,
-      price: (product.price / 100).toFixed(2),
+      price: product.price ,
       vaccinated: product.vaccinated,
       dewormed: product.dewormed,
       trained: product.trained,
