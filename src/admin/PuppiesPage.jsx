@@ -263,7 +263,7 @@ const PuppiesPage = () => {
 
                 <input
                   type="number"
-                  placeholder="Price (in USD)"
+                  placeholder="Price"
                   value={form.price}
                   onChange={(e) => setForm({ ...form, price: e.target.value })}
                   required
