@@ -12,7 +12,7 @@ export default function HeroSection() {
            At Donda Puppies, every wagging tail has a story. From playful pups to loyal companions, we bring you healthy, happy, and well-cared-for puppies ready to join your family. Explore our carefully bred collection, find your match, and start a lifelong friendship today
         </p>
         <Link
-          to="/products"
+          to="/puppies"
           className="inline-block bg-white text-[#A97449] font-semibold py-3 px-6 rounded-2xl shadow-md hover:bg-[#f0e6df] transition"
         >
           Shop Now
